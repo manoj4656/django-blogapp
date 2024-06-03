@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Blog | Welcome{% endblock title %}
 
+    {% block content %}
     <main class="sp">
       <div class="container">
         <center>
@@ -64,17 +65,17 @@
       <div class="container">
         <h1 class="sec-title">Top blogs</h1>
         <div class="grid-3">
+            {% for post in posts %}
           <!-- card -->
           <a href="#">
             <div class="card">
               <div class="post-img">
-                <img src="images/post.png" alt="" />
+                <img src="post.image.url" alt="" />
                 <div class="tag">Tag name</div>
               </div>
               <div class="card-content">
                 <h3>
-                  A blog title and other stuffs will add here, also we can
-                  include.
+                    {{post.title}}
                 </h3>
                 <div class="author">
                   <div class="profile-pic">
@@ -82,63 +83,14 @@
                   </div>
                   <div class="details">
                     <p>Author name</p>
-                    <small>June 20, 2022</small>
+                    <small>{{post.last_updated}}</small>
                   </div>
                 </div>
               </div>
             </div>
           </a>
           <!-- card end-->
-          <!-- card -->
-          <a href="#">
-            <div class="card">
-              <div class="post-img">
-                <img src="images/post.png" alt="" />
-                <div class="tag">Tag name</div>
-              </div>
-              <div class="card-content">
-                <h3>
-                  A blog title and other stuffs will add here, also we can
-                  include.
-                </h3>
-                <div class="author">
-                  <div class="profile-pic">
-                    <img src="images/author.svg" alt="" />
-                  </div>
-                  <div class="details">
-                    <p>Author name</p>
-                    <small>June 20, 2022</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- card end-->
-          <!-- card -->
-          <a href="#">
-            <div class="card">
-              <div class="post-img">
-                <img src="images/post.png" alt="" />
-                <div class="tag">Tag name</div>
-              </div>
-              <div class="card-content">
-                <h3>
-                  A blog title and other stuffs will add here, also we can
-                  include.
-                </h3>
-                <div class="author">
-                  <div class="profile-pic">
-                    <img src="images/author.svg" alt="" />
-                  </div>
-                  <div class="details">
-                    <p>Author name</p>
-                    <small>June 20, 2022</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- card end-->
+          {% endfor %}
         </div>
         <center>
           <a href=""><button class="btn btn-primary rounded view">
@@ -151,6 +103,7 @@
       <div class="container">
         <h1 class="sec-title">New blogs</h1>
         <div class="grid-3">
+            {% for post in posts %}
           <!-- card -->
           <a href="#">
             <div class="card">
@@ -160,72 +113,22 @@
               </div>
               <div class="card-content">
                 <h3>
-                  A blog title and other stuffs will add here, also we can
-                  include.
+                  {{post.title}}
                 </h3>
                 <div class="author">
                   <div class="profile-pic">
-                    <img src="images/author.svg" alt="" />
+                    <img src="post.image.url" alt="" />
                   </div>
                   <div class="details">
                     <p>Author name</p>
-                    <small>June 20, 2022</small>
+                    <small>{{post.last_updated|date}}</small>
                   </div>
                 </div>
               </div>
             </div>
           </a>
           <!-- card end-->
-          <!-- card -->
-          <a href="#">
-            <div class="card">
-              <div class="post-img">
-                <img src="images/post.png" alt="" />
-                <div class="tag">Tag name</div>
-              </div>
-              <div class="card-content">
-                <h3>
-                  A blog title and other stuffs will add here, also we can
-                  include.
-                </h3>
-                <div class="author">
-                  <div class="profile-pic">
-                    <img src="images/author.svg" alt="" />
-                  </div>
-                  <div class="details">
-                    <p>Author name</p>
-                    <small>June 20, 2022</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- card end-->
-          <!-- card -->
-          <a href="#">
-            <div class="card">
-              <div class="post-img">
-                <img src="images/post.png" alt="" />
-                <div class="tag">Tag name</div>
-              </div>
-              <div class="card-content">
-                <h3>
-                  A blog title and other stuffs will add here, also we can
-                  include.
-                </h3>
-                <div class="author">
-                  <div class="profile-pic">
-                    <img src="images/author.svg" alt="" />
-                  </div>
-                  <div class="details">
-                    <p>Author name</p>
-                    <small>June 20, 2022</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-          <!-- card end-->
+          {% endfor %}
         </div>
         <center>
           <a href=""><button class="btn btn-primary rounded view">
@@ -234,3 +137,4 @@
         </center>
       </div>
     </section>
+    {% endblock content %}
