@@ -67,10 +67,10 @@
         <div class="grid-3">
             {% for post in posts %}
           <!-- card -->
-          <a href="#">
+          <a href="{% url 'post_page' post.slug %}">
             <div class="card">
               <div class="post-img">
-                <img src="post.image.url" alt="" />
+                <img src="{{post.image.url}}" alt="" />
                 <div class="tag">Tag name</div>
               </div>
               <div class="card-content">
@@ -105,10 +105,10 @@
         <div class="grid-3">
             {% for post in posts %}
           <!-- card -->
-          <a href="#">
+          <a href="{% url 'post_page' post.slug %}">
             <div class="card">
               <div class="post-img">
-                <img src="images/post.png" alt="" />
+                <img src="{{post.image.url}}" alt="" />
                 <div class="tag">Tag name</div>
               </div>
               <div class="card-content">
@@ -117,7 +117,7 @@
                 </h3>
                 <div class="author">
                   <div class="profile-pic">
-                    <img src="post.image.url" alt="" />
+                    <img src="images/post.png" alt="" />
                   </div>
                   <div class="details">
                     <p>Author name</p>

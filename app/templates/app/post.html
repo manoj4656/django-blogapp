@@ -30,7 +30,7 @@
                   </div>
                   <div class="track">
                     <i class="uil uil-users-alt"></i>
-                    <p class="view-count">2500+ views</p>
+                    <p class="view-count">{{post.view_count}} view{{post.view_count|pluralize}}</p>
                   </div>
                   <div class="track">
                     <form action="" method="POST">
@@ -57,17 +57,9 @@
                       {{ post.content }}
                     </p>
                     <div class="blog-tags">
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
-                      <div class="tag">Tag content</div>
+                      {% for tag in post.tag.all %}
+                      <div class="tag">{{ tag.name}}</div>
+                      {% endfor %}
                     </div>
                     <div class="social-share">
                       <div class="reactions">
