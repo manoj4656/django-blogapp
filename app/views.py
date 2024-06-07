@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from app.models import Post,Comments,Tag,Profile
+from app.models import Post,Comments,Tag,Profile,WebsiteMeta
 from app.forms import CommentForm,SubscribeForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -14,6 +14,10 @@ def index(request):
     featured_blog = Post.objects.filter(is_featured=True)
     subscribe_form = SubscribeForm()
     subscribe_successfull = None
+    website_info = None
+
+    if WebsiteMeta.objects.all().exists():
+        website_info = WebsiteMeta.objects.all()[0]
 
     if featured_blog:
         featured_blog = featured_blog[0]
@@ -25,7 +29,7 @@ def index(request):
             subscribe_successfull = 'Subscribed successfully'
             subscribe_form = SubscribeForm()
 
-    context = {'posts':posts,'top_posts':top_posts,'recent_posts':recent_posts,'subscribe_form':subscribe_form,'subscribe_successfull':subscribe_successfull,'featured_blog':featured_blog}
+    context = {'posts':posts,'top_posts':top_posts,'website_info':website_info,'recent_posts':recent_posts,'subscribe_form':subscribe_form,'subscribe_successfull':subscribe_successfull,'featured_blog':featured_blog}
     return render(request,'app/index.html',context)
 
 
@@ -90,3 +94,11 @@ def search_posts(request):
     posts = Post.objects.filter(title__icontains=search_query)
     context={'posts':posts,'search_query':search_query}
     return render(request,'app/search.html',context)
+
+def about(request):
+    website_info = None
+
+    if WebsiteMeta.objects.all().exists():
+        website_info = WebsiteMeta.objects.all()[0]
+    context={'website_info':website_info}
+    return render(request,'app/about.html',context)
