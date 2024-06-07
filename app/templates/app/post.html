@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Blog | blog detail{% endblock title %}
+{% load static %}
     
     {% block content %}
       <div class="container">
@@ -58,7 +59,7 @@
                     </p>
                     <div class="blog-tags">
                       {% for tag in post.tag.all %}
-                      <div class="tag">{{ tag.name}}</div>
+                      <a href="{% url 'tag_page' tag.slug %}" class="tag">{{ tag.name}}</a>
                       {% endfor %}
                     </div>
                     <div class="social-share">
@@ -93,7 +94,7 @@
                     <div class="user-comment">
                       <div class="author">
                         <div class="profile-pic">
-                          <img src="../images/author.svg" alt="" />
+                          <img src="{% static 'images/author.svg' %}" alt="" />
                         </div>
                         <div class="details">
                           <p>{{comment.name}}</p>
@@ -139,7 +140,7 @@
                         <div class="public-reply">
                           <div class="author">
                             <div class="profile-pic">
-                              <img src="../images/author.svg" alt="" />
+                              <img src="{% static 'images/author.svg' %}" alt="" />
                             </div>
                             <div class="details">
                               <p>{{reply.name}}</p>
